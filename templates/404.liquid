@@ -1,2 +1,8 @@
-<h1>{{ 'general.404.title' | t }}</h1>
-<p>{{ 'general.404.subtext_html' | t }}</p>
+<div class="p-10 text-center h-screen bg-blue-700 text-white">
+    <h1 class="font-bold text-2xl">{{ 'general.404.title' | t }}</h1>
+    <p class="">{{ 'general.404.subtext_html' | t }}</p>
+    <br>
+    {% render 'icon-sadface'%}
+    <br>
+    <a class="text-white bg-yellow-500 p-1 rounded-md mt-2 hover:bg-yellow-400 ease-in duration-100" href="{{ routes.root_url }}">Go back</a>
+</div>

@@ -1,28 +1,51 @@
 <!-- /templates/customers/login.liquid -->
+<div class="flex items-center justify-center h-screen bg-purple-900">
+    <div class="text-center bg-purple-100 p-10 rounded-xl w-4/6">
+        <div class="bg-white/75 p-6 w-3/5 rounded-xl">
 
-<h2>Login</h2>
-{% form 'customer_login' %}
+        {% comment %} {% assign icon_name = 'add' %}
+        <svg class="icon icon-{{ icon_name }} text-black" viewBox="0 0 20 20">
+          <use xlink:href="{{ 'icons/polaris-icons.svg#polaris-' | append: icon_name }}"/>
+        </svg> {% endcomment %}
 
-{{ form.errors | default_errors }}
+        {% comment %} <img src="{{ shop.brand }}" width="10" height="10"> {% endcomment %}
+        <p id="shop">{{ block.settings}}</p>
+        <script>
+            console.log("hola");
+            console.log(document.getElementById("shop").innerHTML);
+        </script>
 
-<label for="customer_email">Email Address</label>
-<input type="email" name="customer[email]" />
 
-<label for="customer_password">Password</label>
-<input type="password" name="customer[password]" />
 
-<input type="submit" value="Sign In" />
+            <p class="font-bold text-sm text-left m-auto w-4/6 mb-2">{{ shop.name }}</p>
+            <h2 class="text-5xl font-bold text-left m-auto w-4/6 mb-10">Login</h2>
+            {% form 'customer_login' %}
+            {{ form.errors | default_errors }}
+            <div class="m-auto w-4/6 text-left">
+                <label for="customer_email" class="text-gray-500">Email Address:</label>
+                <input class="w-full bg-transparent outline-none rounded-md p-1 border-green-500 border-solid border-2 focus:border-green-300" type="email" id="customer_email" name="customer[email]" />
+            </div>
+            <br>
+            <div class="m-auto w-4/6 text-left">
+                <label for="customer_password" class="text-gray-500">Password:</label>
+                <input  class="w-full bg-transparent outline-none rounded-md p-1 border-green-500 border-solid border-2 focus:border-green-300" type="password" id="customer_password" name="customer[password]" />
+            </div>
+            <br>
+            <input type="submit" value="Sign In" class="text-white p-1 bg-black rounded-md w-2/6 cursor-pointer"/>
 
-{% endform %}
+            {% endform %}
 
-<h2>Forgot Password</h2>
-{% form 'recover_customer_password' %}
+            <span class="text-sm opacity-70">Forgot Password</span>
+            {% form 'recover_customer_password' %}
 
-{{ form.errors | default_errors }}
+            {{ form.errors | default_errors }}
 
-<label for="customer_email">Email Address</label>
-<input type="email" name="email" />
+            <label for="customer_email">Email Address</label>
+            <input type="email" name="email" />
 
-<input type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
 
-{% endform %}
+            {% endform %}
+        </div>
+    </div>
+</div>
